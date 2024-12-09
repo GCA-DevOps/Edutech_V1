@@ -1,0 +1,83 @@
+<div class="bg-cover bg-center min-h-screen flex justify-center items-center"
+  style="background-image: url('../../../../../assets/school\ 1.png')">
+  <div class="bg-white-900 min-h-screen flex justify-center items-center">
+    <div class="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl">
+      <div class="mx-auto flex w-full max-w-md flex-col space-y-16">
+        <div class="flex flex-col items-center justify-center text-center space-y-2">
+          <div class="font-semibold text-3xl">
+            <p>Email Verification</p>
+          </div>
+          <div class="flex flex-row text-sm font-medium text-gray-700">
+            <p>We have sent a code to your email {{email | emailMask: 4}}</p>
+          </div>
+        </div>
+
+        <div>
+          <form [formGroup]="otpForm" (ngSubmit)="verifyOtp()">
+            <div class="flex flex-col space-y-16">
+              <div class="flex flex-row items-center justify-center mx-auto w-full max-w-xs">
+                <div class="w-12 h-16 otp-input">
+                  <input formControlName="otp1"
+                    class="w-12 h-16 flex flex-col items-center justify-center text-center px-4 outline-none rounded-xl border border-pink-950 text-lg bg-white focus:bg-gray-50 text-black otp-field"
+                    type="text">
+                </div>
+                <div class="w-12 h-16 otp-input">
+                  <input formControlName="otp2"
+                    class="w-12 h-16 flex flex-col items-center justify-center text-center px-4 outline-none rounded-xl border border-pink-950  text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 otp-field"
+                    type="text">
+                </div>
+                <div class="w-12 h-16 otp-input">
+                  <input formControlName="otp3"
+                    class="w-12 h-16 flex flex-col items-center justify-center text-center px-4 outline-none rounded-xl border border-pink-950  text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 otp-field"
+                    type="text">
+                </div>
+                <div class="w-12 h-16 otp-input">
+                  <input formControlName="otp4"
+                    class="w-12 h-16 flex flex-col items-center justify-center text-center px-4 outline-none rounded-xl border border-pink-950  text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 otp-field"
+                    type="text">
+                </div>
+                <div class="w-12 h-16 otp-input">
+                  <input formControlName="otp5"
+                    class="w-12 h-16 flex flex-col items-center justify-center text-center px-4 outline-none rounded-xl border border-pink-950  text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 otp-field"
+                    type="text">
+                </div>
+                <div class="w-12 h-16 otp-input">
+                  <input formControlName="otp6"
+                    class="w-12 h-16 flex flex-col items-center justify-center text-center px-4 outline-none rounded-xl border v0 te border-pink-950  xt-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 otp-field"
+                    type="text">
+                </div>
+                <!-- <div class="w-12 h-16 otp-input">
+                  <input formControlName="otp7" class="w-12 h-16 flex flex-col items-center justify-center text-center px-4 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 otp-field" type="text">
+                </div>
+                <div class="w-12 h-16 otp-input">
+                  <input formControlName="otp8" class="w-12 h-16 flex flex-col items-center justify-center text-center px-4 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 otp-field" type="text">
+                </div> -->
+              </div>
+
+              <!-- <div class="otp-fields">
+                <div *ngFor="let key of ['otp1', 'otp2', 'otp3', 'otp4', 'otp5', 'otp6', 'otp7', 'otp8']" class="otp-input">
+                  <input type="text" [formControlName]="key" maxlength="1" (input)="otpInput(key, $event)">
+                </div>
+              </div> -->
+
+              <div class="flex flex-col space-y-5">
+                <div>
+                  <button
+                    class="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-pink-950 border-none text-white text-sm shadow-sm"
+                    type="submit" [disabled]="otpForm.invalid">
+                    Verify Account
+                  </button>
+                </div>
+
+                <div class="flex items-baseline justify-center text-center text-sm font-medium text-gray-500 space-x-1">
+                  <p>Didn't receive code?</p>
+                  <a class="text-blue-600" href="http://" target="_blank" rel="noopener noreferrer">Resend</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

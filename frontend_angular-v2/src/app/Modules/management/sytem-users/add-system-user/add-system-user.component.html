@@ -1,0 +1,101 @@
+<div mat-dialog-title class="bg-pink-950">
+  <h1 class="text-white">System-user Creation Form</h1>
+</div>
+<form [formGroup]="SystemUserForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content>
+    <!-- NAMES -->
+    <div class="flex flex-row gap-2 ">
+      <mat-form-field class="mt-2.5 w-full ">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="eg.Simon" formControlName="first_name" required="">
+      </mat-form-field>
+      <mat-form-field class="mt-2.5 w-full">
+        <mat-label>Middle Name</mat-label>
+        <input matInput placeholder="eg. Kim" formControlName="middle_name">
+      </mat-form-field>
+      <mat-form-field class="mt-2.5 w-full">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="eg. Mzabibu" formControlName="last_name" required="">
+      </mat-form-field>
+    </div>
+
+    <!-- GENDER -->
+    <div>
+      <mat-radio-group aria-label="Select an option" formControlName="gender" required="">
+        <mat-label><b>Gender</b></mat-label>
+        <mat-radio-button value="M">Male</mat-radio-button>
+        <mat-radio-button value="F">Female</mat-radio-button>
+        <mat-radio-button value="O">Others</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+   
+
+
+
+    <!-- NATIONALITY -->
+    <div class="flex flex-row gap-2 ">
+      <mat-form-field class="mt-2.5 w-full">
+        <mat-label>Nationality</mat-label>
+        <mat-select formControlName="nationality" (selectionChange)="onNationalityChange()">
+          <mat-option *ngFor="let country of eastAfricanCountries" [value]="country.name">{{ country.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- ADDRESS -->
+      <mat-form-field class="mt-2.5 w-full">
+        <mat-label>County/Region</mat-label>
+        <mat-select formControlName="address">
+          <mat-option *ngFor="let county of selectedCountryCounties" [value]="county">{{ county }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- ROLE/USERGROUP. -->
+    <div class="flex flex-row gap-2 ">
+      <mat-form-field class="w-full">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="usergroup" required="">
+          <mat-option *ngFor="let val of role; let i = index" [value]="i + 1">{{val}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="mt-2.5 w-full">
+        <mat-label>School Name</mat-label>
+        <mat-select formControlName="schools" required="">
+          <mat-option *ngFor="let val of schools; let i = index" [value]="i + 1">{{val}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="flex flex-row gap-2">
+      <mat-form-field class="mt-2.5 w-full">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="eg. simza3@gmail.com" formControlName="email" required="">
+      </mat-form-field>
+      <!-- DATE -->
+      <mat-form-field class="w-full">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date_of_birth" required="">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker class="bg-pink-950"></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+
+
+    <div mat-dialog-actions class="flex flex-row gap-2 p-4 ">
+      <button mat-raised-button type="button" [mat-dialog-close]="false"
+        class="flex-1 border-2  border-pink-950 bg-pink-50 hover:bg-red-900 focus:ring-4 focus:ring-red-700 hover:text-white px-2 py-1 rounded-lg text-sm mx-2">
+        Cancel
+      </button>
+      <button title="Submit Details" mat-raised-button type="submit"
+        class="flex-1 border-2  border-pink-950 bg-pink-50 hover:bg-red-900 focus:ring-4 focus:ring-red-700 hover:text-white px-2 py-1 rounded-lg text-sm mx-2">
+        {{ data ? 'Update': 'Submit'}}
+      </button>
+    </div>
+  </div>
+</form>

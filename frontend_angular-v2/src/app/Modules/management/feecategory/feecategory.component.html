@@ -1,0 +1,90 @@
+<div class="main-body flex flex-col transition-all duration-300">
+  <!-- Header -->
+  <div class="bg-purple-700 p-4 flex flex-row justify-between items-center">
+    <span class="text-lg font-times text-pink-50 pl-7 ml-4">Fee Structure</span>
+    <div class="flex space-x-4">
+      <button
+        title="Add Fee Category"
+        class="border-2 border-pink-950 bg-pink-50 hover:bg-pink-900 focus:ring-4 focus:ring-pink-700 hover:text-white px-4 py-2 rounded-lg text-sm"
+        (click)="addFeeCategory()">
+        <span class="bi bi-person-plus"></span> Create Fee Structure
+      </button>
+      <button
+        title="Download Fee Category"
+        class="border-2 border-pink-950 bg-pink-50 hover:bg-pink-900 focus:ring-4 focus:ring-pink-700 hover:text-white px-4 py-2 rounded-lg text-sm"
+        (click)="generatePdf()">
+        <span class="bi bi-cloud-download"></span> Download
+      </button>
+    </div>
+  </div>
+
+  <br/>
+
+  <!-- Search Input -->
+  <div class="flex justify-center mb-4">
+    <div class="relative w-full max-w-md">
+      <input
+        type="text"
+        class="w-full py-2 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Search Fee Structure"
+        (keyup)="applyFilter($event)"
+        #input />
+    </div>
+  </div>
+
+  <!-- Card Layout -->
+  <div class="flex flex-wrap gap-4 justify-center p-4">
+    <!-- Loading Spinner -->
+    <div *ngIf="isLoading" class="loader border-4 border-purple-500 border-t-transparent rounded-full w-16 h-16 animate-spin"></div>
+  
+    <!-- Fee Categories List -->
+    <div *ngFor="let feeCategory of feeCategories" class="bg-white shadow-lg rounded-lg p-4 border border-gray-200 hover:shadow-xl transition-transform transform hover:scale-105 flex-grow max-w-[25%] min-w-[20%]">
+      
+      <!-- Icon -->
+      <div class="flex justify-center items-center mb-2">
+        <div class="text-purple-600 text-4xl">
+          <i class="bi bi-cash-stack"></i>
+        </div>
+      </div>
+  
+      <!-- Card Content -->
+      <div class="text-center">
+        <h3 class="text-lg font-bold text-purple-700 mb-2">
+          <strong>{{ feeCategory.name }}</strong>
+        </h3>
+        <p class="text-sm text-gray-600">
+          <strong>Grade:</strong> {{ feeCategory.grade }}
+        </p>
+        <p class="text-sm text-gray-600">
+          <strong>Amount:</strong> {{ feeCategory.total_amount | currency }}
+        </p>
+        <p class="text-sm text-gray-600">
+          <strong>Date Posted:</strong> {{ feeCategory.date_posted | date }}
+        </p>
+      </div>
+  
+      <!-- Buttons -->
+      <div class="mt-4 flex flex-wrap gap-2 justify-center">
+        <button
+          class="flex-1 px-3 py-1 border-2 border-purple-500 text-purple-500 rounded-md hover:bg-purple-500 hover:text-white" 
+          (click)="viewFeeCategory(feeCategory.id)"
+          title="View">
+          View
+        </button>
+        <button
+          class="flex-1 px-3 py-1 border-2 border-blue-500 text-blue-500 rounded-md hover:bg-blue-500 hover:text-white"
+          (click)="editFeeCategory(feeCategory.id)"
+          title="Edit">
+          Edit
+        </button>
+        <button
+          class="flex-1 px-3 py-1 border-2 border-red-500 text-red-500 rounded-md hover:bg-red-500 hover:text-white"
+          (click)="deleteFeeCategory(feeCategory.id)"
+          title="Delete">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+  
+</div>

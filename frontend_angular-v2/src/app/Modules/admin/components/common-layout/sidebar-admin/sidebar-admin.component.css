@@ -1,0 +1,42 @@
+.header {
+    padding-left: 15px;
+}
+
+.avater {
+    text-align: center;
+    align-items: center;
+}
+
+.collapsed {
+  width: 2.5rem;
+  padding: 0.5rem;
+  justify-content: center;
+}
+
+.expanded {
+  width: auto;
+  padding: 1rem;
+  justify-content: flex-start;
+}
+
+/* Add a smooth transition for better visual effect */
+a {
+  transition: all 0.3s ease;
+}
+
+.list_button {
+  padding-bottom: 1rem;
+}
+.sidebar {
+    /* Your default sidebar styles */
+    /* For example: */
+    width: 200px;
+    height: 100%;
+    transition: transform 0.3s ease;
+    transform: translateX(-200px); /* Initially hide the sidebar off-screen */
+  }
+  
+  .sidebar.open {
+    transform: translateX(0); /* Show the sidebar by moving it into view */
+  }
+  

@@ -1,0 +1,42 @@
+<div
+  class="bg-white dark:bg-gray-900 mr-5 border-2 rounded-lg shadow-neutral-400 mb-10 p-6"
+>
+  <div class="text-center border-b border-gray-200 dark:border-gray-700 pb-4">
+    <dl>
+      <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
+        Profit
+      </dt>
+      <dd class="leading-none text-3xl font-bold text-gray-900 dark:text-white">
+        Ksh. {{ totalProfit }}
+      </dd>
+    </dl>
+  </div>
+  <div class="grid grid-cols-2 gap-4 mt-4">
+    <dl>
+      <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
+        Income
+      </dt>
+      <dd
+        class="leading-none text-xl font-bold text-pink-500 dark:text-pink-400"
+      >
+        {{ totalIncome }}
+      </dd>
+    </dl>
+    <dl>
+      <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">
+        Expenses
+      </dt>
+      <dd class="leading-none text-xl font-bold text-red-600 dark:text-red-500">
+        {{ totalExpense }}
+      </dd>
+    </dl>
+  </div>
+  <div id="bar-chart" class="mt-6"></div>
+  <div
+    class="border-t border-gray-200 dark:border-gray-700 mt-6 pt-4 text-center"
+  >
+    <p class="text-gray-500 dark:text-gray-400 text-sm">
+      Generated insights for the current period
+    </p>
+  </div>
+</div>

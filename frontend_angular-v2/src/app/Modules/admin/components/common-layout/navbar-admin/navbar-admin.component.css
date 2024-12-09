@@ -1,0 +1,15 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+.toggle-container {
+    order: -1;
+  }
+  
+  .elimu-pay-container {
+    order: 0; 
+  }
+  .navbar-gradient {
+    background: linear-gradient(135deg, #0e88ec 0%, rgb(52, 39, 226) 100%);
+  }
+  
+  

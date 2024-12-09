@@ -1,0 +1,75 @@
+<div mat-dialog-title class="bg-pink-950">
+  <h1 class="text-white">Roles Form</h1>
+</div>
+<form [formGroup]="RolesForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content>
+    <!-- ROLE/USERGROUP. -->
+    <div class="flex flex-row gap-2">
+      <mat-form-field class="w-full">
+        <mat-label>Role/Usergroup</mat-label>
+        <mat-select formControlName="name" required>
+          <mat-option *ngFor="let val of role; let i = index" [value]="val">{{ val }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- DESCRIPTION -->
+      <mat-form-field class="mt-2.5 w-full">
+        <mat-label>Description</mat-label>
+        <input matInput placeholder="eg. School Owner" formControlName="description" required>
+      </mat-form-field>
+    </div>
+
+    <!-- PERMISSIONS -->
+    <div class="mt-4">
+      <h2 class="text-lg font-semibold text-black">Permissions</h2>
+      <div class="flex flex-wrap">
+        <div class="w-full md:w-1/2 mb-4 md:mb-0">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="addFee" id="addFee">
+            <label class="form-check-label text-black" for="addFee">Add Fee</label>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="viewFee" id="viewFee">
+            <label class="form-check-label text-black" for="viewFee">View Fee</label>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 mb-4 md:mb-0">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="updateFee" id="updateFee">
+            <label class="form-check-label text-black" for="updateFee">Update Fee</label>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="viewStudents" id="viewStudents">
+            <label class="form-check-label text-black" for="viewStudents">View Students</label>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 mb-4 md:mb-0">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="addStudents" id="addStudents">
+            <label class="form-check-label text-black" for="addStudents">Add Students</label>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="addRoles" id="addRoles">
+            <label class="form-check-label text-black" for="addRoles">Add Roles</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div mat-dialog-actions class="flex flex-row gap-2 p-4">
+      <button mat-raised-button type="button" [mat-dialog-close]="false"
+        class="flex-1 border-2 border-pink-950 bg-pink-50 hover:bg-red-900 focus:ring-4 focus:ring-red-700 hover:text-white px-2 py-1 rounded-lg text-sm mx-2">
+        Cancel
+      </button>
+      <button title="Submit Details" mat-raised-button type="submit"
+        class="flex-1 border-2 border-pink-950 bg-pink-50 hover:bg-red-900 focus:ring-4 focus:ring-red-700 hover:text-white px-2 py-1 rounded-lg text-sm mx-2">
+        {{ data ? 'Update': 'Submit'}}
+      </button>
+    </div>
+  </div>
+</form>

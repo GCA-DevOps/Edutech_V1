@@ -1,0 +1,69 @@
+<div mat-dialog-title class="bg-pink-950">
+    <h1 class="text-white">Staff Creation Form</h1>
+</div>
+<form [formGroup]="staffForm"(ngSubmit)="onFormSubmit()">
+
+<div mat-dialog-content>
+    <!-- NAMES -->
+    <div class="flex flex-row gap-2 ">
+        <mat-form-field class="mt-2.5 w-full ">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="eg. Simon" formControlName="firstName" required>
+        </mat-form-field>
+        
+
+        <mat-form-field class="mt-2.5 w-full">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="eg. Mzabibu" formControlName="lastName" required>
+        </mat-form-field>
+    </div>
+
+    <!--  contact -->
+    <div class="flex flex-row gap-2 ">
+        <mat-form-field class="mt-2.5 w-full ">
+            <mat-label>Contact</mat-label>
+            <input matInput placeholder="eg. 1234"formControlName="contact" type="number" required>
+        </mat-form-field>
+        <!--Email-->
+        <mat-form-field class="mt-2.5 w-full">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="eg.simon@gmail.com" formControlName="email" required>
+        </mat-form-field>
+    </div>
+
+
+
+
+    <!-- GENDER -->
+    <div>
+        <mat-radio-group aria-label="Select an option" formControlName="gender" required="">
+            <mat-label><b>Gender</b></mat-label>
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="other">Others</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <!-- DATES-->
+    <div class="flex flex-row gap-2 ">
+        <mat-form-field class="w-full">
+            <mat-label>Date Created</mat-label>
+            <input matInput [matDatepicker]="docPicker"formControlName="doc" required="">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="docPicker"></mat-datepicker-toggle>
+            <mat-datepicker #docPicker class="bg-pink-950"></mat-datepicker>
+        </mat-form-field>
+
+
+    </div>
+
+
+    <div mat-dialog-actions class="flex flex-row gap-2 p-4 ">
+        <button mat-raised-button type="button" [mat-dialog-close]="false"
+            class="flex-1 text-white bg-pink-950 border hover:bg-gray-400 hover:border-pink-950 hover:text-white rounded-lg px-2 py-1  transition-transform duration-300 transform focus:scale-105">
+            Cancel
+        </button>
+        <button mat-raised-button type="submit"
+            class="flex-1 text-white bg-pink-950 border  hover:bg-gray-400 hover:border-pink-950 hover:text-white rounded-lg px-2 py-1 transition-transform duration-300 transform focus:scale-105 ">
+            {{data ? 'Update' : 'Save'}}
+        </button>
+    </div>

@@ -1,0 +1,157 @@
+<div class="container mx-auto scroll-m-0 max-h-screen overflow-y-auto">
+  <div class="bg-purple-700 p-4 rounded-t-lg">
+    <h1 class="text-white text-2xl font-semibold text-center">
+      School Creation Form
+    </h1>
+  </div>
+
+  <form [formGroup]="schoolForm" (ngSubmit)="onFormSubmit()">
+    <div class="p-6 bg-white border border-gray-300 rounded-b-lg space-y-6">
+      <!-- SCHOOL DETAILS -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+          <input
+            placeholder="eg. Nairobi School"
+            formControlName="name"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+        <div>
+          <label for="school_code" class="block text-sm font-medium text-gray-700">School Code</label>
+          <input
+            placeholder="eg. DS001"
+            formControlName="school_code"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+        <div>
+          <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+          <input
+            placeholder="eg. Nairobi"
+            formControlName="city"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+      </div>
+
+      <!-- ADDRESS AND CONTACT -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+          <select
+            formControlName="country"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          >
+            <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="country_code" class="block text-sm font-medium text-gray-700">Country Code</label>
+          <select
+            formControlName="country_code"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          >
+            <option *ngFor="let code of countryCodes" [value]="code">{{ code }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="street_address" class="block text-sm font-medium text-gray-700">Street Address</label>
+          <input
+            placeholder=""
+            formControlName="street_address"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+      </div>
+
+      <!-- OTHER DETAILS -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input
+            placeholder="eg. simza3@gmail.com"
+            formControlName="email_address"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+        <div>
+          <label for="website" class="block text-sm font-medium text-gray-700">Website</label>
+          <input
+            placeholder="eg. http://www.dummyschool.com"
+            formControlName="website"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+        <div>
+          <label for="date_created" class="block text-sm font-medium text-gray-700">Date Created</label>
+          <input
+            [matDatepicker]="picker"
+            formControlName="date_created"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </div>
+      </div>
+
+      <!-- PHONE NUMBERS -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="phone_number1" class="block text-sm font-medium text-gray-700">Phone Number 1</label>
+          <input
+            placeholder="eg. 0700123456"
+            formControlName="phone_number1"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+        <div>
+          <label for="phone_number2" class="block text-sm font-medium text-gray-700">Phone Number 2</label>
+          <input
+            placeholder="eg. 0700123456"
+            formControlName="phone_number2"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+        <div>
+          <label for="street_address" class="block text-sm font-medium text-gray-700">County</label>
+          <input
+            placeholder=""
+            formControlName="county"
+            required
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="flex justify-end">
+        <button
+          type="button"
+          (click)="onCancel()"
+          class="px-4 py-2 mr-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          [disabled]="!schoolForm.valid"
+          class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

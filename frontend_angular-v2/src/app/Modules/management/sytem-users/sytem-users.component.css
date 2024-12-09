@@ -1,0 +1,30 @@
+/* Ensure this is not overriding important styles */
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.main-body {
+  padding-top: 20px;
+  margin: 0 auto;
+  max-width: 1248px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+/* Added to make sure footer is visible */
+.main-footer {
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  background: #f0f0f0; /* Light background to ensure visibility */
+  text-align: center;
+}
+
+/* Utility classes for padding */
+.p-4 {
+  padding: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}

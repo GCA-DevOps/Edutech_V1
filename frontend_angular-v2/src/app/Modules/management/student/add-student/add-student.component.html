@@ -1,0 +1,228 @@
+<div class="container mx-auto px-4 py-6 max-h-[80vh] overflow-y-auto">
+  <!-- Header Section -->
+  <div class="bg-purple-700 p-4 rounded-t-lg">
+    <h1 class="text-white text-2xl font-semibold text-center">
+      Student Creation Form
+    </h1>
+  </div>
+
+  <!-- Form Section -->
+  <div class="p-6 bg-white border border-gray-300 rounded-b-lg">
+    <!-- Radio Options -->
+    <div class="mb-6 flex flex-wrap gap-6">
+      <label class="inline-flex items-center">
+        <input
+          type="radio"
+          name="studentType"
+          value="existingWithUPI"
+          [(ngModel)]="selectedOption"
+          (change)="onOptionChange('existingWithUPI')"
+          class="form-radio"
+        />
+        <span class="ml-2">Existing with UPI Number</span>
+      </label>
+      <label class="inline-flex items-center">
+        <input
+          type="radio"
+          name="studentType"
+          value="existingWithoutUPI"
+          [(ngModel)]="selectedOption"
+          (change)="onOptionChange('existingWithoutUPI')"
+          class="form-radio"
+        />
+        <span class="ml-2">Existing without UPI Number</span>
+      </label>
+    </div>
+
+    <!-- Conditional UPI Input -->
+    <div *ngIf="selectedOption === 'existingWithUPI'" class="mb-6">
+      <label for="upiInput" class="block text-sm font-medium text-gray-700">
+        Enter UPI Number
+      </label>
+      <input
+        type="text"
+        id="upiInput"
+        [(ngModel)]="upiNumber"
+        (change)="populateFormWithUPI(upiNumber)"
+        placeholder="Enter UPI Number"
+        class="w-full p-3 rounded-lg border border-gray-300"
+      />
+      <p *ngIf="upiErrorMessage" class="text-red-500 text-sm">{{ upiErrorMessage }}</p>
+    </div>
+
+    <!-- Student Form -->
+    <form
+      *ngIf="selectedOption === 'existingWithoutUPI'"
+      [formGroup]="studentForm"
+      class="space-y-6"
+    >
+      <!-- File Upload -->
+      <div>
+        <label for="urls" class="block text-sm font-medium">Student Photo</label>
+        <input
+          type="file"
+          formControlName="urls"
+          (change)="onFileChange($event)"
+          accept="image/*"
+          class="block w-full text-sm"
+        />
+        <div *ngIf="imageUrl" class="mt-2">
+          <img [src]="imageUrl" alt="Preview" class="max-h-40 rounded-md" />
+        </div>
+        <p *ngIf="fileErrorMessage" class="text-red-500 text-sm">{{ fileErrorMessage }}</p>
+      </div>
+
+      <!-- Personal Information -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="firstName" class="block text-sm font-medium">First Name</label>
+          <input
+            type="text"
+            formControlName="firstName"
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+          <p *ngIf="studentForm.get('firstName')?.invalid && studentForm.get('firstName')?.touched" class="text-red-500 text-sm">
+            First Name is required.
+          </p>
+        </div>
+        <div>
+          <label for="middleName" class="block text-sm font-medium">Middle Name</label>
+          <input
+            type="text"
+            formControlName="middleName"
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+        <div>
+          <label for="lastName" class="block text-sm font-medium">Last Name</label>
+          <input
+            type="text"
+            formControlName="lastName"
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+          <p *ngIf="studentForm.get('lastName')?.invalid && studentForm.get('lastName')?.touched" class="text-red-500 text-sm">
+            Last Name is required.
+          </p>
+        </div>
+      </div>
+
+      <!-- Other Details -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="dateOfBirth" class="block text-sm font-medium">Date of Birth</label>
+          <input
+            type="date"
+            formControlName="dob"
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+        <div>
+          <label for="dateOfAdmission" class="block text-sm font-medium">Date of Admission</label>
+          <input
+            type="date"
+            formControlName="dateOfAdmission"
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+        <!-- Parent ID Input Section -->
+        <div class="mb-6">
+          <label for="parentId" class="block text-sm font-medium">Parent ID</label>
+          <input
+            type="text"
+            id="parentId"
+            formControlName = "parentID"
+            [(ngModel)]="parentId"
+            (focus)="openParentIdDropdown()"
+            (input)="filterParentIds($event)"
+            [value]="parentId"
+            placeholder="Search Parent ID"
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+          <!-- Parent ID Dropdown -->
+          <div
+            *ngIf="isParentIdDropdownOpen && filteredParentIds.length > 0"
+            class="mt-2 bg-white border border-gray-300 rounded-lg shadow-lg"
+          >
+            <ul>
+              <li
+                *ngFor="let id of filteredParentIds"
+                (click)="selectParentId(id)"
+                class="p-2 hover:bg-gray-100 cursor-pointer"
+              >
+                {{ id }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="upiNumber" class="block text-sm font-medium">UPI Number</label>
+          <input
+            type="text"
+            formControlName="upiNumber"
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+        <div>
+          <label for="admNumber" class="block text-sm font-medium">Admission Number</label>
+          <input
+            type="text"
+            formControlName="admNumber"
+            class="w-full p-3 rounded-lg border border-gray-300"
+          />
+        </div>
+        <div>
+          <label for="studentGender" class="block text-sm font-medium">Gender</label>
+          <select
+            formControlName="studentGender"
+            class="w-full p-3 rounded-lg border border-gray-300">
+            <option *ngFor="let gender of studentGender" [value]="gender">
+              {{ gender }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="grade" class="block text-sm font-medium">Grade</label>
+          <select
+            formControlName="grade"
+            class="w-full p-3 rounded-lg border border-gray-300">
+            <option *ngFor="let structure of structures" [ngValue]="structure">
+              {{ structure.grade }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="healthStatus" class="block text-sm font-medium">Health Status</label>
+        <textarea
+          formControlName="healthStatus"
+          class="w-full p-3 rounded-lg border border-gray-300"
+          placeholder="Enter health status"
+        ></textarea>
+      </div>
+
+      <!-- Submit Buttons -->
+      <div class="flex justify-end">
+        <button
+          type="button"
+          (click)="onCancel()"
+          class="px-4 py-2 mr-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          (click) = "onFormSubmit()"
+          class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

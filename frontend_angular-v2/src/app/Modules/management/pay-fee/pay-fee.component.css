@@ -1,0 +1,25 @@
+/* Add this to your CSS file if using custom styles */
+.maroon {
+    background-color: #800000;
+    border-color: #800000;
+  }
+  
+  .maroon:hover {
+    background-color: #550000;
+    border-color: #550000;
+  }
+  
+  .form-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 1rem; /* Space between elements */
+  }
+  
+  .input-field {
+    flex: 0 1 200px; /* Allow the input field to shrink and grow, but set a base width of 200px */
+  }
+  
+  button {
+    height: 56px; /* Match the height of the input field */
+  }
+  

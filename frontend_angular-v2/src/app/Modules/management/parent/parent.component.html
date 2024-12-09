@@ -1,0 +1,104 @@
+<div class="main-body flex-1 transition-all duration-300">
+  <!-- Header -->
+  <div class="bg-purple-700 p-4 flex justify-between items-center">
+    <span class="text-lg font-times text-pink-50 pl-7 ml-4">
+      Parents Management Page
+    </span>
+
+    <div class="flex space-x-4">
+      <button
+        title="Add Parent"
+        class="border-2 border-pink-950 bg-pink-50 hover:bg-pink-900 focus:ring-4 focus:ring-pink-700 hover:text-white px-4 py-2 rounded-lg text-sm"
+        (click)="openAddEditParentForm()"
+      >
+        <span class="bi bi-person-plus"></span> ADD PARENT
+      </button>
+
+      <button
+        title="Download Report"
+        class="border-2 border-pink-950 bg-pink-50 hover:bg-pink-900 focus:ring-4 focus:ring-pink-700 hover:text-white px-4 py-2 rounded-lg text-sm"
+        (click)="generatePdf()"
+      >
+        <span class="bi bi-cloud-download"></span> DOWNLOAD
+      </button>
+    </div>
+  </div>
+  <br />
+
+  <!-- Search Input -->
+  <div class="flex justify-center mb-4">
+    <div class="relative w-full max-w-md">
+      <input
+        type="text"
+        class="w-full py-2 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Search Parent"
+        (keyup)="applyFilter($event)"
+        #input
+      />
+    </div>
+  </div>
+
+  <!-- Scrollable Table -->
+  <div class="overflow-hidden border border-gray-200 rounded-lg">
+    <div class="overflow-y-auto max-h-96">
+      <table
+        class="min-w-full table-auto"
+        *ngIf="dataSource.filteredData && dataSource.filteredData.length > 0"
+      >
+        <!-- Header Row -->
+        <thead class="bg-gray-200 sticky top-0">
+          <tr>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">FIRST NAME</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">LAST NAME</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">ID NUMBER</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">PHONE NUMBER</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">EMAIL</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let row of dataSource.filteredData"
+            class="border-t bg-white hover:bg-gray-100"
+          >
+            <td class="px-4 py-2 text-sm text-gray-700">{{ row.first_name }}</td>
+            <td class="px-4 py-2 text-sm text-gray-700">{{ row.last_name }}</td>
+            <td class="px-4 py-2 text-sm text-gray-700">{{ row.parentIdno }}</td>
+            <td class="px-4 py-2 text-sm text-gray-700">{{ row.phone_number }}</td>
+            <td class="px-4 py-2 text-sm text-gray-700">{{ row.email }}</td>
+            <td class="px-4 py-2 text-sm flex space-x-2">
+              <button
+                title="Edit"
+                (click)="openUpdateParentForm(row)"
+                class="px-2 py-1 text-blue-500 hover:bg-blue-100 rounded-md"
+              >
+                <span class="bi bi-pencil"></span>
+              </button>
+              <button
+                title="Delete"
+                (click)="deleteParent(row.id)"
+                class="px-2 py-1 text-red-500 hover:bg-red-100 rounded-md"
+              >
+                <span class="bi bi-trash"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Fallback Message -->
+      <div
+        *ngIf="!(dataSource.filteredData && dataSource.filteredData.length)"
+        class="text-center py-4 text-gray-500"
+      >
+        No parents found.
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <!-- <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100, 200]"
+    class="mt-4 border-t border-gray-200"
+    [length]="dataSource.filteredData?.length ?? 0"
+  ></mat-paginator> -->
+</div>

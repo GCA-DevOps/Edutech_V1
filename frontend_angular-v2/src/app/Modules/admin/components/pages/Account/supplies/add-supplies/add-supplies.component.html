@@ -1,0 +1,143 @@
+<div mat-dialog-title class="bg-pink-950">
+    <h1 class="text-white">Supplies Creation Form</h1>
+  </div>
+  <form [formGroup]="SuppliesForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content>
+      <h2>Supplies Information</h2>
+      <!-- Personal Information -->
+      <div class="flex flex-row gap-2">
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>businessName</mat-label>
+          <input matInput placeholder="businessName" formControlName="businessName" required>
+          <!-- <mat-select formControlName="name" required> -->
+            <!-- <mat-option value="Mr">Mr</mat-option>
+            <mat-option value="Mrs">Mrs</mat-option>
+            <mat-option value="Miss">Miss</mat-option>
+            <mat-option value="Ms">Ms</mat-option>
+            <mat-option value="Other">Other</mat-option> -->
+          <!-- </mat-select> -->
+        </mat-form-field>
+
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>supplieridNO</mat-label>
+          <input matInput placeholder="supplieridNO" formControlName="supplieridNO" required>
+        </mat-form-field>
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>prefix</mat-label>
+          <input matInput placeholder="prefix" formControlName="prefix">
+        </mat-form-field>
+        <!-- <mat-form-field class="mt-2.5 w-full">
+          <mat-label>Amount</mat-label>
+          <input matInput placeholder="Amount" formControlName="amount" required>
+        </mat-form-field> -->
+      </div>
+  
+      <!-- Contact Information -->
+      <div class="flex flex-row gap-2">
+        <!-- <mat-form-field class="mt-2.5 w-full">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender" required>
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+        <!-- <mat-form-field class="mt-2.5 w-full"> -->
+          <mat-form-field class="mt-2.5 w-full">
+          <mat-label>firstname</mat-label>
+          <input matInput placeholder="firstname" formControlName="firstname" required>
+        </mat-form-field>
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>middlename</mat-label>
+          <input matInput placeholder="middlename" formControlName="middlename" required>
+        </mat-form-field>
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>lastname</mat-label>
+          <input matInput placeholder="lastname" formControlName="lastname" required>
+        </mat-form-field>
+        <!-- <mat-form-field class="mt-2.5 w-full">
+          <mat-label>ID/Passport No.</mat-label>
+          <input matInput placeholder="id_passport" formControlName="id_passport" required>
+        </mat-form-field> -->
+      </div>
+  
+      <!-- Additional Information -->
+      <!-- <div class="flex flex-row gap-2">
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>Phone Number</mat-label>
+          <input matInput placeholder="Phone Number" formControlName="phoneNumber" required>
+        </mat-form-field>
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email" required>
+        </mat-form-field>
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>Occupation</mat-label>
+          <input matInput placeholder="Occupation" formControlName="occupation">
+        </mat-form-field>
+      </div> -->
+  
+      <!-- Parent ID -->
+      <div class="flex flex-row gap-2">
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>phoneNumber</mat-label>
+          <input matInput placeholder="phoneNumber" formControlName="phoneNumber" required>
+        </mat-form-field>
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>altPhone</mat-label>
+          <input matInput placeholder="altPhone" formControlName="altPhone" required>
+        </mat-form-field>
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>email</mat-label>
+          <input matInput placeholder="EX.user@example.com" formControlName="email" required>
+        </mat-form-field>
+      </div>
+      <div class="flex flex-row gap-2">
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>address</mat-label>
+          <input matInput placeholder="address" formControlName="address" required>
+        </mat-form-field>
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>city</mat-label>
+          <input matInput placeholder="city" formControlName="city" required>
+        </mat-form-field>
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>postalCode</mat-label>
+          <input matInput placeholder="EX.P.O BOX 1X2" formControlName="postalCode" required>
+        </mat-form-field>
+      </div>
+      <div class="flex flex-row gap-2">
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>country</mat-label>
+          <input matInput placeholder="country" formControlName="country" required>
+        </mat-form-field>
+        <mat-form-field class="mt-2.5 w-full">
+          <mat-label>openingBalance</mat-label>
+          <input matInput placeholder="openingBalance" formControlName="openingBalance" required>
+        </mat-form-field>
+        <!-- <mat-form-field class="mt-2.5 w-full">
+          <mat-label>status</mat-label>
+          <input matInput placeholder="status" formControlName="status" required>
+        </mat-form-field> -->
+      </div>
+    </div>
+  
+    <div mat-dialog-actions class="flex flex-row gap-2 p-4">
+      <button mat-raised-button type="button" [mat-dialog-close]="false"
+        class="flex-1 text-white bg-pink-950 hover:bg-gray-400 hover:border-pink-950 hover:text-white rounded-lg px-2 py-1 transition-transform duration-300 transform focus:scale-105" color="warn">
+        Cancel
+      </button>
+      <div class="submitting">
+        <div class="bg-blue-500 text-white flex flex-row gap-2" id="spinner" role="status" *ngIf = "isSubmitting" >
+          <mat-spinner [diameter]="30" class="mat-spinner-color"></mat-spinner>
+          <span class="visually-hidden">Submitting...</span>
+        </div>
+        <button mat-raised-button type="submit" *ngIf = "!isSubmitting"
+        class="flex-1 text-white bg-blue-500 border hover:bg-gray-400 hover:border-blue-500 hover:text-white rounded-lg px-2 py-1 transition-transform duration-300 transform focus:scale-105" color="primary">
+        Save
+      </button>
+      </div>
+    
+    </div>
+  </form>
+  

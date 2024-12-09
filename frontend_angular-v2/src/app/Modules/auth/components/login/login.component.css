@@ -1,0 +1,11 @@
+.error {
+    background-color: red;
+    border-radius: 8px;
+    height: 30px;
+    text-align: center;
+}
+
+button:hover {
+    cursor: pointer;
+}
+

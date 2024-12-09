@@ -1,0 +1,16 @@
+<div id="delete-container" class="m-3 p-3">
+    
+    <p> Are Sure You Want To Delete This Student Record ? </p>
+    <div class="delete" class="flex flex-row gap-2 pt-2">
+        <button mat-dialog-close class="flex-1 border-2  border-pink-950 bg-pink-50 hover:bg-red-900  hover:text-white px-2 py-1 rounded-lg text-sm mx-2">Cancel</button>
+        <div *ngIf="isDeleting" id="state" class="border-2 
+        border-pink-950 bg-pink-50 hover:bg-red-900 
+         hover:text-white px-2 py-1 rounded-lg text-sm mx-2" >
+         <span>Deleting..</span>
+         <mat-spinner [diameter]="30"></mat-spinner>
+        </div>
+        <button *ngIf="!isDeleting" mat-button color class="flex-1 border-2 
+        border-pink-950 bg-pink-50 hover:bg-red-900 
+         hover:text-white px-2 py-1 rounded-lg text-sm mx-2" (click)="deleteRecord()">Delete</button>
+    </div>
+</div>

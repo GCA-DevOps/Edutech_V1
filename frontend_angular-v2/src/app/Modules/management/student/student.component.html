@@ -1,0 +1,108 @@
+<div class="main-body flex-1 transition-all duration-300">
+  <!-- Header -->
+  <div class="bg-purple-700 p-4 flex justify-between items-center">
+    <span class="text-lg font-times text-pink-50 pl-7">
+      Student Management
+    </span>
+
+    <div class="flex space-x-4">
+      <button
+        title="Add Student"
+        class="border-2 border-pink-950 bg-pink-50 hover:bg-pink-900 focus:ring-4 focus:ring-pink-700 hover:text-white px-4 py-2 rounded-lg text-sm"
+        (click)="openAddEditStudentForm()"
+      >
+        <mat-icon class="mr-2">add</mat-icon> ADD STUDENT
+      </button>
+    </div>
+  </div>
+  <br />
+
+  <!-- Search Input -->
+  <div class="flex justify-center mb-4">
+    <div class="relative w-full max-w-md">
+      <input
+        matInput
+        class="w-full py-2 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Search Student"
+        (keyup)="applyFilter($event)"
+        #input
+      />
+    </div>
+  </div>
+
+  <!-- Scrollable Table -->
+  <div class="overflow-hidden border border-gray-200 rounded-lg">
+    <div class="overflow-y-auto max-h-96">
+      <table
+        class="min-w-full table-auto"
+        *ngIf="dataSource.data && dataSource.data.length > 0"
+      >
+        <!-- Header Row -->
+        <thead class="bg-gray-200 sticky top-0">
+          <tr>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">#</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Unique No</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">First Name</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Last Name</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Admission Number</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">UPI Number</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Grade</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let row of dataSource.data"
+            class="border-t bg-white hover:bg-gray-100"
+          >
+            <td class="px-4 py-2 text-sm text-gray-700">{{ dataSource.data.indexOf(row) + 1 }}</td>
+            <td class="px-4 py-2 text-sm text-gray-700">{{ row.uniqueId }}</td>
+            <td class="px-4 py-2 text-sm text-gray-700">{{ row.firstName }}</td> 
+            <td class="px-4 py-2 text-sm text-gray-700">{{ row.lastName }}</td>
+            <td class="px-4 py-2 text-sm text-gray-700">ADM-00{{ row.admNumber }}</td>
+            <td class="px-4 py-2 text-sm text-gray-700">{{ row.upiNumber }}</td>
+            <td class="px-4 py-2 text-sm text-gray-700">{{ row.grade }}</td>
+
+
+            
+
+            <td class="px-4 py-2 text-sm flex space-x-2">
+              <button
+                title="View"
+                class="px-2 py-1 text-purple-500 hover:bg-blue-100 rounded-md"
+                (click)="openFeeStructure(row)" >
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button
+                title="Edit"
+                class="px-2 py-1 text-blue-500 hover:bg-blue-100 rounded-md"
+                (click)="openUpdateStudentForm(row)" >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                title="Delete"
+                class="px-2 py-1 text-red-500 hover:bg-red-100 rounded-md"
+                (click)="deleteStudent(row.id)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Fallback Message -->
+      <div
+        *ngIf="!(dataSource.data && dataSource.data.length)"
+        class="text-center py-4 text-gray-500"
+      >
+        No students found.
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    class="mt-4 border-t border-gray-200"
+  ></mat-paginator>
+</div>

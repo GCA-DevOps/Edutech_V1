@@ -1,0 +1,161 @@
+<div class="container mx-auto px-4 py-6">
+  <!-- Header Section -->
+  <div class="bg-purple-700 p-4 rounded-t-lg">
+    <h1 class="text-white text-2xl font-semibold text-center">Create Fee Structure</h1>
+  </div>
+
+  <!-- Form Section -->
+  <div class="p-6 bg-white border border-gray-300 rounded-b-lg">
+    <!-- Radio Options -->
+
+    <!-- Student Form -->
+    <form [formGroup]="form" class="space-y-6">
+      <!-- Personal Information -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label for="title" class="block text-sm font-medium">Title</label>
+          <input type="text" formControlName="title" class="w-full p-3 rounded-lg border border-gray-300" />
+          <p class="text-red-500 text-sm">
+            Title is required.
+          </p>
+        </div>
+        <div>
+          <label for="year" class="block text-sm font-medium">Year</label>
+          <select formControlName="year" class="w-full p-3 rounded-lg border border-gray-300">
+            <option *ngFor="let year of years" [value]="year">
+              {{ year }}
+            </option>
+          </select>
+        </div>
+
+        <!-- grade -->
+        <div>
+          <label for="grade" class="block text-sm font-medium">Grade</label>
+          <select formControlName="grade" class="w-full p-3 rounded-lg border border-gray-300">
+            <option *ngFor="let grade of grades" [value]="grade">
+              {{ grade }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div formArrayName="components" class="space-y-4">
+        <div
+          *ngFor="let term of subForms.controls; let i = index"
+          [formGroupName]="i"
+          class="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-[1fr_1fr_1fr_1fr_auto] gap-4 items-center"
+        >
+          <!-- Description Field -->
+          <div class="col-span-1 md:col-span-1">
+            <label class="block text-sm font-medium">Description</label>
+            <input
+              type="text"
+              formControlName="description"
+              class="w-full p-3 rounded-lg border border-gray-300"
+            />
+            <p
+              class="text-red-500 text-sm"
+              *ngIf="subForms.at(i).get('description')?.invalid && subForms.at(i).get('description')?.touched"
+            >
+              Description is required
+            </p>
+          </div>
+      
+          <!-- Amount Field -->
+          <div class="col-span-1 md:col-span-1">
+            <label class="block text-sm font-medium">Amount</label>
+            <input
+              type="text"
+              formControlName="amount"
+              class="w-full p-3 rounded-lg border border-gray-300"
+            />
+            <p
+              class="text-red-500 text-sm"
+              *ngIf="subForms.at(i).get('amount')?.invalid && subForms.at(i).get('amount')?.touched"
+            >
+              Amount is required.
+            </p>
+          </div>
+      
+          <!-- Term Field -->
+          <div class="col-span-1 md:col-span-1">
+            <label class="block text-sm font-medium">Term</label>
+            <select
+              formControlName="term"
+              class="w-full p-3 rounded-lg border border-gray-300"
+            >
+              <option *ngFor="let termOption of termArray" [value]="termOption">
+                {{ termOption }}
+              </option>
+            </select>
+            <p
+              class="text-red-500 text-sm"
+              *ngIf="subForms.at(i).get('term')?.invalid && subForms.at(i).get('term')?.touched"
+            >
+              Term is required.
+            </p>
+          </div>
+      
+          <!-- Deadline Field -->
+          <div class="col-span-1 md:col-span-1">
+            <label class="block text-sm font-medium">Deadline</label>
+            <input
+              type="date"
+              formControlName="deadline"
+              class="w-full p-3 rounded-lg border border-gray-300"
+            />
+            <p
+              class="text-red-500 text-sm"
+              *ngIf="subForms.at(i).get('deadline')?.invalid && subForms.at(i).get('deadline')?.touched"
+            >
+              Deadline is required.
+            </p>
+          </div>
+      
+          <!-- Buttons -->
+          <div class="flex space-x-2">
+            <button
+              mat-icon-button
+              title="add"
+              (click)="addForm()"
+              class="bg-green-500 text-white p-2 rounded"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              title="remove"
+              (click)="removeForm(i)"
+              [disabled]="subForms.length === 1"
+              class="bg-red-500 text-white p-2 rounded"
+            >
+              <mat-icon>remove</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      
+
+      <!-- Submit Buttons -->
+      <div class="flex justify-end">
+        <button type="button" (click)="cancel()"
+          class="px-4 py-2 mr-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100">
+          Cancel
+        </button>
+        <button type="submit" [disabled]="!form.valid" (click)="submit()"
+          class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">
+          <span *ngIf="loading">
+            <mat-progress-spinner
+            diameter="18"
+            color="bg-white"
+            mode="indeterminate"
+            class="spinner-border spinner-border-sm mr-1 mr-2"
+          >
+        </mat-progress-spinner>
+          </span>
+          <span *ngIf="!loading">Submit</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

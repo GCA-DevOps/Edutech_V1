@@ -1,0 +1,101 @@
+/* Reset box sizing */
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+} */
+
+/* General body settings */
+mat-sidenav-container {
+    height: calc(100vh - 64px);
+}
+
+.content {
+  padding: 24px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+}
+
+/* Flex container for sidebar and content */
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Sidebar styles */
+#drawer-navigation {
+  width: 16rem;
+  overflow: hidden;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Sidebar collapsed */
+.w-0 {
+  width: 0;
+}
+
+/* Sidebar expanded */
+.w-64 {
+  width: 16rem;
+}
+.hidden {
+  display: none;
+}
+
+#main-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+  background-color: white;
+  border: none;
+  border-left: none;
+  box-shadow: none;
+}
+
+.pt-14 {
+  padding-top: 3.5rem;
+}
+
+#drawer-navigation,
+#main-content {
+  margin: 0;
+  padding: 0;
+}
+/* Sidebar styles */
+app-sidebar-admin {
+  transition: width 0.3s ease-in-out;
+}
+
+/* Main content transition */
+#main-content {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* When sidebar is collapsed */
+#main-content.ml-0 {
+  margin-left: 0 !important;
+}
+
+/* When sidebar is expanded */
+#main-content.ml-0 {
+  margin-left: 16rem; /* Adjust this width to match the sidebar width when open */
+}
+
+/* Optional: Handle small screen size */
+@media (max-width: 768px) {
+  .hidden {
+    display: none !important;
+  }
+}
+

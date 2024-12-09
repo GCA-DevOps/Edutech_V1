@@ -1,0 +1,212 @@
+<div class="overflow-y-auto w-56 py-0 px-3 h-full bg-purple-200">
+  <!-- section A -->
+  <div *ngIf="!sidebarCollapsed()" class="profile-card bg-purple-200 text-white mb-0">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="avater">
+          <mat-icon style="font-size: 50px !important; height: 50px; width: 50px; padding-top: 2px; "
+            class="">account_circle</mat-icon>
+        </div>
+        <div class="header">
+
+          <p class="text-purple-950">
+            <small><b>Role: </b>{{ role  | uppercase}}</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <h2 matSubheader class="bg-pink-950 text-white py-0 m-0">Pages</h2> -->
+  <form action="#" method="GET" class="md:hidden mb-2">
+    <label for="sidebar-search" class="sr-only">Search</label>
+    <div class="relative">
+      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+        <svg class="w-5 h-5 text-purple-950 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z">
+          </path>
+        </svg>
+      </div>
+      <input type="text" name="search" id="sidebar-search"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+        placeholder="" />
+    </div>
+  </form>
+  <ul class="side_button gap-0 flex flex-col ">
+    <li class="list_button" routerLinkActive="active">
+      <a [routerLink]="['home']"
+      [ngClass]="{'collapsed': sidebarCollapsed(), 'expanded': !sidebarCollapsed()}"
+
+        class=" text-purple-950 hover:border-purple-300 hover:border hover:border-solid-sm focus:bg-red-300 p-2 bg-purple-200  rounded-lg shadow-xl  flex gap-2 items-center row hover:scale-[1.05]">
+        <i class="bi bi-speedometer2"></i>
+        <span *ngIf="!sidebarCollapsed()">Dashboard</span>
+      </a>
+
+    </li>
+    <li class="list_button">
+      <div class="">
+        <div (click)='closeNav1()'
+        [ngClass]="{'collapsed': sidebarCollapsed(), 'expanded': !sidebarCollapsed()}"
+          class="text-purple-950 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg- shadow-xl p-2 bg-purple-200 rounded-lg  flex gap-2 items-center hover:scale-[1.05] cursor-pointer">
+          <i class="bi bi-cash"></i>
+          <span *ngIf="!sidebarCollapsed()">Transactions</span>
+          <span *ngIf="!sidebarCollapsed()" class="font-extrabold ml-auto">
+            <i class="bi bi-chevron-down"></i>
+          </span>
+        </div>
+        <div [hidden]="isHidden1" class="p-2 flex-col">
+
+          <div (click)="closeIncome()" class="mb-2">
+            <span [routerLink]="['Incometypes']"
+            [ngClass]="{'collapsed': sidebarCollapsed(), 'expanded': !sidebarCollapsed()}"
+            *ngIf="!sidebarCollapsed()"
+              class="flex w-full p-2 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 bg-purple-700 text-white rounded-lg hover:scale-[1.03] shadow-lg ">Income
+              <span *ngIf="!sidebarCollapsed()" class="font-extrabold ml-auto text-white">
+                <i class="bi bi-chevron-down"></i>
+              </span></span>
+            <div [hidden]="isHidden3">
+
+            </div>
+          </div>
+          <div (click)="closeIncome()" class="mb-2">
+
+            <div [hidden]="isHidden3">
+
+            </div>
+          </div>
+          <div (click)="closeExpenses()">
+            <span [routerLink]="['expenses']"
+              [ngClass]="{'collapsed': sidebarCollapsed(), 'expanded': !sidebarCollapsed()}"
+              *ngIf="!sidebarCollapsed()"
+              class="flex w-full p-2 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 bg-purple-700 text-w rounded-lg hover:scale-[1.03] shadow-lg text-white">Expenses
+              <span *ngIf="!sidebarCollapsed()" class="font-extrabold ml-auto text-white">
+                <i class="bi bi-chevron-down"></i>
+              </span>
+            </span>
+            <div [hidden]="isHidden4">
+              <ul class='p-2 flex flex-col gap-1 '>
+
+               
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="list_button  ">
+      <div>
+        <div (click)="closeNavS()"
+        [ngClass]="{'collapsed': sidebarCollapsed(), 'expanded': !sidebarCollapsed()}"
+          class="text-purple-950 shadow-xl p-2 bg-purple-200 rounded-lg flex gap-2 items-center row hover:scale-[1.05] hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 cursor-pointer">
+          <i class="bi bi-people"></i>
+          <span *ngIf="!sidebarCollapsed()"> Registry</span>
+          <span *ngIf="!sidebarCollapsed()" class="font-extrabold ml-auto">
+            <i class="bi bi-chevron-down"></i>
+          </span>
+        </div>
+        <div [hidden]="isHidden9">
+          <ul class="p-2 flex flex-col gap-1">
+
+            <li><a [routerLink]="['student']"
+              [ngClass]="{'collapsed': sidebarCollapsed(), 'expanded': !sidebarCollapsed()}"
+                *ngIf="!sidebarCollapsed()"
+                class="flex w-full p-2 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 bg-purple-700 text-white rounded-lg hover:scale-[1.03] shadow-lg ">Students</a>
+            </li>
+
+            <!--<li><a [routerLink]="['staff']"
+              class="flex w-full p-2 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 bg-pink-800 text-white rounded-lg hover:scale-[1.03] shadow-lg ">Staff</a>
+            </li>-->
+
+            <li><a [routerLink]="['parent']"
+              [ngClass]="{'collapsed': sidebarCollapsed(), 'expanded': !sidebarCollapsed()}"
+              *ngIf="!sidebarCollapsed()"
+                class="flex w-full p-2 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 bg-purple-700 text-white rounded-lg hover:scale-[1.03] shadow-lg ">Parents</a>
+            </li>
+            <li><a [routerLink]="['feecategory']"
+              [ngClass]="{'collapsed': sidebarCollapsed(), 'expanded': !sidebarCollapsed()}"
+              *ngIf="!sidebarCollapsed()"
+                class="flex w-full p-2 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 bg-purple-700 text-white rounded-lg hover:scale-[1.03] shadow-lg ">
+                Fee Structure</a>
+            </li>
+            <li><a [routerLink]="['school']"
+              [ngClass]="{'collapsed': sidebarCollapsed(), 'expanded': !sidebarCollapsed()}"
+                *ngIf="!sidebarCollapsed()"
+                class="flex w-full p-2 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 bg-purple-700 text-white rounded-lg hover:scale-[1.03] shadow-lg ">Schools</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </li>
+    <!-- Modified Reports-->
+    <li class="list_button">
+      <div class="">
+        <div (click)='closeNav2()'
+        [ngClass]="{'collapsed': sidebarCollapsed(), 'expanded': !sidebarCollapsed()}"
+          class="text-purple-950 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 shadow-xl p-2 bg-purple-200 rounded-lg  flex gap-2 items-center hover:scale-[1.05] cursor-pointer">
+          <i class="bi bi-file-text"></i>
+          <span *ngIf="!sidebarCollapsed()">Reports</span>
+          <span *ngIf="!sidebarCollapsed()" class="font-extrabold ml-auto">
+            <i class="bi bi-chevron-down"></i>
+          </span>
+        </div>
+        <div [hidden]="isHidden2" class="p-2 flex-col">
+
+          <div (click)="closeReports()" class="mb-2">
+            <a [routerLink]="['reports']"
+              class="flex w-full p-2 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 bg-purple-700 text-white rounded-lg hover:scale-[1.03] shadow-lg ">View
+              Reports<span class="font-extrabold ml-auto text-white">
+                <i *ngIf="sidebarCollapsed()" class="bi bi-chevron-down"></i>
+              </span></a>
+            <div [hidden]="isHidden6">
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="list_button">
+      <div>
+        <div (click)="closeNav()"
+        [ngClass]="{'collapsed': sidebarCollapsed(), 'expanded': !sidebarCollapsed()}"
+          class="text-purple-950 shadow-xl p-2 bg-purple-200 rounded-lg flex gap-2 items-center row hover:scale-[1.05] hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 cursor-pointer">
+          <i class="bi bi-people"></i>
+          <span *ngIf="!sidebarCollapsed()"> Access Management</span>
+          <span *ngIf="!sidebarCollapsed()" class="font-extrabold ml-auto">
+            <i class="bi bi-chevron-down"></i>
+          </span>
+        </div>
+        <div [hidden]="isHidden">
+          <ul class="p-2 flex flex-col gap-1">
+
+            <li><a [routerLink]="['roles']"
+                class='flex w-full p-2 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 focus:text-black bg-purple-700 text-white rounded-lg hover:scale-[1.03] shadow-lg'>Roles</a>
+            </li>
+            <li><a [routerLink]="['SystemUsers']"
+                class='flex w-full p-2 hover:border-gray-300 hover:border hover:border-solid-sm focus:bg-red-300 focus:text-black bg-purple-700 text-white rounded-lg hover:scale-[1.03] shadow-lg'>User</a>
+            </li>
+
+
+          </ul>
+        </div>
+      </div>
+    </li>
+
+    <li class="list_button" routerLinkActive="active">
+      <a
+        href="javascript:void(0)"
+        (click)="logout()"
+        [ngClass]="{
+          'collapsed p-2 pb-2 justify-center': sidebarCollapsed(),
+          'expanded p-2 pb-4': !sidebarCollapsed()
+        }"
+        class="text-purple-950 hover:border-purple-300 hover:border hover:border-solid-sm focus:bg-red-300 bg-purple-200 rounded-lg shadow-xl flex gap-2 items-center row hover:scale-[1.05]"
+      >
+        <i class="bi bi-box-arrow-right"></i>
+        <span *ngIf="!sidebarCollapsed()">Logout</span>
+      </a>
+    </li>    
+  </ul>
+</div>

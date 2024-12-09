@@ -1,0 +1,13 @@
+/* school.component.css */
+
+/* Style for the Cancel button */
+button[mat-dialog-close] {
+ background-color: red; /* Set the background color to red */
+ color: white; /* Set the text color to white for better contrast */
+}
+
+/* Style for the Submit button */
+button[type="submit"] {
+ background-color: blue; /* Set the background color to blue */
+ color: white; /* Set the text color to white for better contrast */
+}

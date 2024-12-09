@@ -1,0 +1,59 @@
+<div>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="flex justify-center items-center py-10">
+    <div class="loader border-t-4 border-blue-500 rounded-full w-12 h-12 animate-spin"></div>
+  </div>
+
+  <!-- Cards Container -->
+  <div class="flex flex-wrap gap-3" *ngIf="!isLoading">
+    <!-- Total Incomes Card -->
+    <div class="w-full sm:w-48 lg:w-1/4 max-w-xs mx-2 bg-violet-100 rounded-lg shadow-lg overflow-hidden relative flex flex-col justify-between border-2 transition transform duration-300 hover:scale-105 hover:shadow-xl">
+      <div class="p-3 flex items-center justify-between">
+        <h3 class="text-lg font-serif font-semibold text-pink-950 mb-1">Total Income</h3>
+        <i class="bi bi-piggy-bank text-pink-950 text-xl" aria-hidden="true"></i>
+      </div>
+      <a [routerLink]="['/admin/feeCollections']">
+        <p class="text-pink-950 mb-3 text-2xl font-bold p-1 hover:scale-110 text-center">KES. {{ totalIncomes }}</p>
+      </a>
+    </div>
+
+    <!-- Total Expenses Card -->
+    <div class="w-full sm:w-48 lg:w-1/4 max-w-xs mx-2 bg-violet-100 rounded-lg shadow-lg overflow-hidden relative flex flex-col justify-between border-2 transition transform duration-300 hover:scale-105 hover:shadow-xl">
+      <div class="p-3 flex items-center justify-between">
+        <h3 class="text-lg font-serif font-semibold text-pink-950 mb-1">Total Expenses</h3>
+        <i class="bi bi-receipt text-pink-950 text-xl" aria-hidden="true"></i>
+      </div>
+      <a href="/expenses">
+        <p class="text-pink-950 mb-3 text-2xl font-bold p-1 hover:scale-110 text-center">KES. {{ totalExpenses }}</p>
+      </a>
+    </div>
+
+    <!-- Net Incomes Card -->
+    <div class="w-full sm:w-48 lg:w-1/4 max-w-xs mx-2 bg-violet-100 rounded-lg shadow-lg overflow-hidden relative flex flex-col justify-between border-2 transition transform duration-300 hover:scale-105 hover:shadow-xl">
+      <div class="p-3 flex items-center justify-between">
+        <h3 class="text-lg font-serif font-semibold text-pink-950 mb-1">Net Income</h3>
+        <i class="bi bi-calculator text-pink-950 text-xl" aria-hidden="true"></i>
+      </div>
+      <p class="text-pink-950 mb-3 text-2xl font-bold p-1 hover:scale-110 text-center">KES. {{ totalProfit }}</p>
+    </div>
+
+    <!-- Supplies Card -->
+    <div class="w-full sm:w-48 lg:w-1/4 max-w-xs mx-2 bg-violet-100 rounded-lg shadow-lg overflow-hidden relative flex flex-col justify-between border-2 transition transform duration-300 hover:scale-105 hover:shadow-xl">
+      <div class="p-3 flex items-center justify-between">
+        <h3 class="text-lg font-serif font-semibold text-pink-950 mb-1">Total Students</h3>
+        <i class="bi bi-people text-pink-950 text-xl" aria-hidden="true"></i>
+      </div>
+      <a href="/supplies">
+        <p class="text-pink-950 mb-3 text-2xl font-bold p-1 hover:scale-110 text-center">10</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Graph Components -->
+  <div class="flex space-x-4 ml-4 mt-4 mb-10">
+    <app-graph-one class="flex-1 h-full"></app-graph-one>
+    <app-graph-two class="flex-1 h-full w-full"></app-graph-two>
+  </div>
+</div>

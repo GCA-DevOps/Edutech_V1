@@ -1,0 +1,60 @@
+<div class="bg-purple-700 p-4 rounded-t-lg">
+  <h1 class="text-white text-2xl font-semibold text-center">
+    Expenses Form
+  </h1>
+</div>
+
+<form [formGroup]="ExpensesForm" (ngSubmit)="onFormSubmit()" class="p-4 space-y-4">
+  <div class="mb-4">  
+    <!-- Expense Information -->
+    <div class="flex flex-col md:flex-row gap-4">
+      <div class="w-full">
+        <label for="name" class="block text-sm font-medium text-gray-700">Expense Name</label> <br>
+        <input id="name" type="text" placeholder="Name" formControlName="name" required
+          class="w-full border border-black rounded-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <div *ngIf="ExpensesForm.get('expensetypes.name')?.invalid && (ExpensesForm.get('expensetypes.name')?.dirty || ExpensesForm.get('expensetypes.name')?.touched)">
+          <small *ngIf="ExpensesForm.get('expensetypes.name')?.errors?.['required']" class="text-red-500">Name is required.</small>
+        </div>
+      </div>
+      
+    </div>
+    <br>
+
+    <!-- Expense Types Information -->
+    <div formGroupName="expensetypes" class="flex flex-col md:flex-row gap-4">
+      <div class="w-full">
+        <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label> <br>
+        <input id="amount" type="number" placeholder="Amount" formControlName="amount" required
+          class="w-full border border-black rounded-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <div *ngIf="ExpensesForm.get('amount')?.invalid && (ExpensesForm.get('amount')?.dirty || ExpensesForm.get('amount')?.touched)">
+          <small *ngIf="ExpensesForm.get('amount')?.errors?.['required']" class="text-red-500">Amount is required.</small>
+          <small *ngIf="ExpensesForm.get('amount')?.errors?.['pattern']" class="text-red-500">Invalid amount format.</small>
+        </div>
+      </div>
+      <br>
+      <div class="w-full">
+        <label for="description" class="block text-sm font-medium text-gray-700">Description</label> <br>
+        <input id="description" type="text" placeholder="Description" formControlName="description"
+          class="w-full border border-black rounded-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col sm:flex-row gap-4 justify-end p-4">
+    <button type="button" [mat-dialog-close]="false"
+      class="px-4 py-2 mr-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100">
+      Cancel
+    </button>
+    
+    <div class="submitting">
+      <div class="bg-blue-500 text-white flex flex-row gap-2" id="spinner" role="status" *ngIf="isSubmitting">
+        <div class="spinner-border animate-spin inline-block w-6 h-6 border-4 border-t-transparent border-blue-500 rounded-full" role="status"></div>
+        <span class="visually-hidden">Submitting...</span>
+      </div>
+      <button type="submit" *ngIf="!isSubmitting"
+        class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">
+        Save
+      </button>
+    </div>
+  </div>
+</form>

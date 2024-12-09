@@ -1,0 +1,476 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Post 1",
+      "content": "This is the content of post 1"
+    },
+    {
+      "id": "2",
+      "title": "Post 2",
+      "content": "This is the content of post 2"
+    },
+    {
+      "id": "3",
+      "title": "Post 3",
+      "content": "This is the content of post 3"
+    }
+  ],
+  "staff": [
+    {
+      "id": "871d",
+      "firstName": "Simon",
+      "lastName": "",
+      "contact": "",
+      "email": "",
+      "gender": "",
+      "doc": ""
+    },
+    {
+      "id": "1476",
+      "firstName": "pp",
+      "lastName": "",
+      "contact": "",
+      "email": "",
+      "gender": "",
+      "doc": ""
+    },
+    {
+      "id": "7cc7",
+      "firstName": "Kimani",
+      "lastName": "",
+      "contact": "",
+      "email": "",
+      "gender": "",
+      "doc": ""
+    }
+  ],
+  "users": [
+    {
+      "first_name": "Zakayo",
+      "middle_name": "",
+      "last_name": "Mwendapole",
+      "email": "zakapole5@gmail.com",
+      "date_of_birth": "2024-04-01",
+      "gender": "O",
+      "usergroup": 8,
+      "address": "Darajani",
+      "nationality": "Kenyan",
+      "schools": 1,
+      "id": "3d79"
+    },
+    {
+      "first_name": "Ali",
+      "middle_name": "Mwanakombo",
+      "last_name": "Salim",
+      "email": "samza5@gmail.com",
+      "date_of_birth": "2024-03-31",
+      "gender": "F",
+      "usergroup": 3,
+      "address": "Kisumu",
+      "nationality": "Kenyan",
+      "schools": 1,
+      "id": "56c0"
+    },
+    {
+      "first_name": "Ann",
+      "middle_name": "Terry",
+      "last_name": "Simiyu",
+      "email": "franciswema4@gmail.com",
+      "date_of_birth": "1993-11-10",
+      "gender": "F",
+      "usergroup": 6,
+      "address": "Nanyuki",
+      "nationality": "Kenyan",
+      "schools": 1,
+      "id": "76ab"
+    },
+    {
+      "first_name": "Felista",
+      "middle_name": "Naitole",
+      "last_name": "Bahati",
+      "email": "phobesam@gmail.com",
+      "date_of_birth": "2002-11-21",
+      "gender": "female",
+      "usergroup": 0,
+      "address": "Mwanza",
+      "nationality": "Tanzanian",
+      "schools": 0,
+      "id": "9961"
+    },
+    {
+      "first_name": "Juma",
+      "middle_name": "s",
+      "last_name": "s",
+      "email": "jumsa@gmail.com",
+      "date_of_birth": "2024-03-31",
+      "gender": "O",
+      "usergroup": 5,
+      "address": "Thika",
+      "nationality": "Kenyan",
+      "schools": 1,
+      "id": "e6ea"
+    },
+    {
+      "first_name": "Mwiny",
+      "middle_name": "H",
+      "last_name": "f",
+      "email": "califu9@gmail.com",
+      "date_of_birth": "2024-03-31",
+      "gender": "M",
+      "usergroup": 4,
+      "address": "Isiolo",
+      "nationality": "Kenyan",
+      "schools": 2,
+      "id": "d6a2"
+    },
+    {
+      "first_name": "Mathias ",
+      "middle_name": "Momanyi",
+      "last_name": "Shibira",
+      "email": "shib@gmail.com",
+      "date_of_birth": "1993-10-18",
+      "gender": "F",
+      "usergroup": 0,
+      "address": "ff",
+      "nationality": "ff",
+      "schools": 1,
+      "id": "2462"
+    },
+    {
+      "first_name": " v",
+      "middle_name": "f",
+      "last_name": "f",
+      "email": "r",
+      "date_of_birth": "1968-11-27",
+      "gender": "O",
+      "usergroup": 5,
+      "address": "Kitui",
+      "nationality": "Kenyan",
+      "schools": 1,
+      "id": "3153"
+    },
+    {
+      "first_name": "a",
+      "middle_name": "s",
+      "last_name": "s",
+      "email": "aaaaaaaaa",
+      "date_of_birth": "2024-04-02",
+      "gender": "O",
+      "usergroup": 1,
+      "address": "kks",
+      "nationality": "sss",
+      "schools": 1,
+      "id": "3d51"
+    },
+    {
+      "first_name": "Mzae",
+      "middle_name": "Elis",
+      "last_name": "Kamau",
+      "email": "kama3@gmail.com",
+      "date_of_birth": "2017-10-10",
+      "gender": "M",
+      "usergroup": 5,
+      "address": "",
+      "nationality": "",
+      "schools": 1,
+      "id": "da46"
+    },
+    {
+      "first_name": "Zabuni",
+      "middle_name": "Majisifu",
+      "last_name": "Mlachake",
+      "email": "zabmajisifu@gmail.com",
+      "date_of_birth": "2024-04-01",
+      "gender": "M",
+      "usergroup": 2,
+      "address": "Kisumu",
+      "nationality": "Kenyan",
+      "schools": 1,
+      "id": "43a6"
+    },
+    {
+      "first_name": "Halima",
+      "middle_name": "Kombo",
+      "last_name": "Jahazi",
+      "email": "halimak6@gmail.com",
+      "date_of_birth": "1993-06-05",
+      "gender": "F",
+      "usergroup": 8,
+      "address": "Lamu",
+      "nationality": "Kenyan",
+      "schools": 1,
+      "id": "a1ae"
+    },
+    {
+      "first_name": "Shiundu",
+      "middle_name": "Fred",
+      "last_name": "",
+      "email": "",
+      "date_of_birth": "2024-04-09",
+      "gender": "F",
+      "usergroup": 5,
+      "address": "Busia",
+      "nationality": "Uganda",
+      "schools": 1,
+      "id": "92ca"
+    },
+    {
+      "first_name": "Ben",
+      "middle_name": "Kiprui",
+      "last_name": "Toroitich",
+      "email": "Eldoret",
+      "date_of_birth": "1981-10-20",
+      "gender": "M",
+      "usergroup": 5,
+      "address": "e",
+      "nationality": "e",
+      "schools": 1,
+      "id": "ec26"
+    },
+    {
+      "first_name": "Vinie",
+      "middle_name": "Kisali",
+      "last_name": "Baker",
+      "email": "viniebaker",
+      "date_of_birth": "1992-05-31",
+      "gender": "M",
+      "usergroup": 1,
+      "address": "Vihiga",
+      "nationality": "Kenyan",
+      "schools": 1,
+      "id": "7ff4"
+    },
+    {
+      "id": "6852",
+      "firstName": "",
+      "middleName": "",
+      "lastName": "",
+      "email": "",
+      "dob": "",
+      "gender": "",
+      "role": "School Administrator",
+      "phoneNumber": "",
+      "address": "",
+      "nationality": "",
+      "school": "",
+      "idNumber": ""
+    },
+    {
+      "id": "7986",
+      "first_name": "siapong",
+      "middle_name": "jk",
+      "last_name": "jk",
+      "email": "TTT",
+      "date_of_birth": "2024-04-01",
+      "gender": "F",
+      "usergroup": 3,
+      "address": "TGDD",
+      "nationality": "uganda",
+      "schools": 1
+    },
+    {
+      "id": "5059",
+      "first_name": "Zainab",
+      "middle_name": "Halima",
+      "last_name": "Ijeiza",
+      "email": "zahaijeiza",
+      "date_of_birth": "1993-03-01",
+      "gender": "O",
+      "usergroup": 1,
+      "address": "Zanzibar",
+      "nationality": "Tanzanian",
+      "schools": 1
+    }
+  ],
+  
+  "School": [
+    {
+      "id": "871d",
+      "first_name": "Simon",
+      "middle_name": "Simon",
+      "last_name": "jomba",
+      "usergroup": "",
+      "country": "",
+      "email": "",
+      "gender": "",
+      "date_of_birth":"",
+      "schools": "",
+      "address": "",
+      "phone_number1": "",
+      "phone_number2": ""
+    },
+    {
+      "id": "871d",
+      "first_name": "Pombe",
+      "last_name": "Maria",
+      "contact": "",
+      "email": "",
+      "gender": "",
+      "doc": ""
+    },
+    {
+      "id": "63a7",
+      "first_name": "kk",
+      "middle_name": "db",
+      "last_name": "nm",
+      "email": "hndn",
+      "date_of_birth": "2024-04-23",
+      "gender": "F",
+      "usergroup": 4,
+      "address": "hn",
+      "nationality": "jn",
+      "schools": 2
+    },
+    {
+      "id": "cd36",
+      "first_name": "grt",
+      "middle_name": "sjgshj",
+      "last_name": "hsgsh",
+      "email": "kdfk",
+      "date_of_birth": "2024-03-23",
+      "gender": "F",
+      "usergroup": 5,
+      "address": "gdhujdg",
+      "nationality": "jjdgdg",
+      "schools": 1
+    }
+  ],
+  "Fee-Category": [
+    {
+      "id": "dea1"
+    },
+    {
+      "id": "b038",
+      "Category": "",
+      "Description": "",
+      "Term": "",
+      "Amount": "3434"
+    },
+    {
+      "id": "3a4f",
+      "Name": "",
+      "Categorycode": "",
+      "Description": "",
+      "Grade": "",
+      "Term": "",
+      "Amount": "10000",
+      "Apply": ""
+    },
+    {
+      "id": "0e94",
+      "Name": "",
+      "Categorycode": "",
+      "Description": "",
+      "Grade": "",
+      "Term": "",
+      "Amount": "1000",
+      "Apply": ""
+    },
+    {
+      "id": "4078",
+      "Name": "",
+      "Categorycode": "",
+      "Description": "",
+      "Grade": "",
+      "Term": "",
+      "Amount": "2000",
+      "Apply": ""
+    },
+    {
+      "id": "5d20",
+      "Name": "",
+      "Categorycode": "",
+      "Description": "",
+      "Grade": "",
+      "Term": "",
+      "Amount": "2344",
+      "Apply": ""
+    },
+    {
+      "id": "b652",
+      "Name": "Tuition",
+      "Categorycode": "tt01",
+      "Description": "paid",
+      "Grade": "primary",
+      "Term": "3",
+      "Amount": "4567",
+      "Apply": "1"
+    },
+    {
+      "id": "82df",
+      "Name": "Tuition",
+      "Categorycode": "sd",
+      "Description": "sdf",
+      "Grade": "5",
+      "Term": "34",
+      "Amount": "56",
+      "Apply": "1"
+    },
+    {
+      "id": "9656",
+      "Name": "Tuition",
+      "Categorycode": "tt08",
+      "Description": "opps",
+      "Grade": "1",
+      "Term": "3",
+      "Amount": "4566",
+      "Apply": "1"
+    },
+    {
+      "id": "264e",
+      "Name": "Tuition",
+      "Categorycode": "hg",
+      "Description": "uytr",
+      "Grade": "jhf",
+      "Term": "7",
+      "Amount": "09876",
+      "Apply": "1"
+    },
+    {
+      "id": "7e25",
+      "Name": "Transport",
+      "Categorycode": "ghjkl",
+      "Description": "dfgj",
+      "Grade": "7",
+      "Term": "6",
+      "Amount": "45678",
+      "Apply": "1"
+    },
+    {
+      "id": "bc5f",
+      "Name": "Tuition",
+      "Categorycode": "rr5",
+      "Description": "yuio",
+      "Grade": "vbnm",
+      "Term": "cvbn",
+      "Amount": "45678",
+      "Apply": "1"
+    },
+    {
+      "id": "fa49",
+      "Name": "Tuition",
+      "Categorycode": "45T",
+      "Description": "WER",
+      "Grade": "FG",
+      "Term": "DF",
+      "Amount": "345",
+      "Apply": "all"
+    },
+    {
+      "id": "6085",
+      "Name": "Tuition",
+      "Categorycode": "dfghj",
+      "Description": "zxcvn",
+      "Grade": "xcvb",
+      "Term": "6",
+      "Amount": "678",
+      "Apply": "optional"
+    }
+  ],
+  "total-incomes": [
+    {
+      "Amount": "67,865"
+    }
+  ]
+}
