@@ -9,7 +9,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -22,19 +22,14 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
-// import 'ngx-toastr/toastr.css';
+import { AuthInterceptor } from 'src/@Core/Authservice/auth.interceptor';
 import { MatSelectModule } from '@angular/material/select';
-
-
-
-
-
 
 @NgModule({
   declarations: [
     AppComponent,
    
+    
     
     
 
@@ -64,23 +59,15 @@ import { MatSelectModule } from '@angular/material/select';
     MatSnackBarModule,
     HttpClientModule, 
     MatTooltipModule,
-  
-        
-
-
-    
-
-
-
-
-
+    MatSelectModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule{ }
-
-
-
-
-

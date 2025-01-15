@@ -1,0 +1,62 @@
+services:
+  frontend:
+    image: edutech
+    build:
+      context: ./frontend_angular-v2
+      dockerfile: ./Dockerfile
+      args:
+        - API_URL=/api/v1/
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - edutech-network
+
+  backend:
+    image: backendpythonv2
+    build:
+      context: ./backend_python-v2
+      dockerfile: ./Dockerfile
+    environment:
+      - CORS_ORIGIN=http://localhost:3000
+      - DB_HOST=db
+      - DB_NAME=edutech_db
+      - DB_USER=edutech_user
+      - DB_PASSWORD=edutech_password
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - edutech-network
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_DATABASE=edutech_db
+      - MYSQL_USER=edutech_user
+      - MYSQL_PASSWORD=edutech_password
+      - MYSQL_ROOT_PASSWORD=root_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - edutech-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
+
+networks:
+  edutech-network:
+    name: edutech-network
+    driver: bridge
+
+volumes:
+  mysql_data:
