@@ -4,7 +4,6 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
-from rest_framework_jwt.utils import jwt_encode_handler
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 
 from edutech_payment_engine.settings import inProd
@@ -239,7 +238,7 @@ class AuthUSer(viewsets.ModelViewSet):
         payload = {
             'user_id': user.id,
         }
-        token = jwt_encode_handler(payload)
+        token = RefreshToken.for_user(user)
         return token
 
     @action(detail=False, methods=['POST'])
