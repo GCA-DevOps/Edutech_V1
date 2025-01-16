@@ -1,10 +1,9 @@
-
 from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from inquiries.models import Inquiries
 from inquiries.serializers import InquiriesSerializers
@@ -18,7 +17,7 @@ class InquiriesView(viewsets.ModelViewSet):
     serializer_class = InquiriesSerializers
 
     # pagination_class = PageNumberPagination
-    # authentication_classes = [JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication]
+    # authentication_classes = [JWTAuthentication, SessionAuthentication, BasicAuthentication]
     # permission_classes = [IsAuthenticated]
 
     def list(self, request, *args, **kwargs):
@@ -74,6 +73,3 @@ class InquiriesView(viewsets.ModelViewSet):
         else:
             status_code = status.HTTP_400_BAD_REQUEST
             return Response({"message": "Inquiries data Not found", "status": status_code})
-
-
-

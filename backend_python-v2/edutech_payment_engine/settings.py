@@ -43,14 +43,34 @@ SECRET_KEY = 'django-insecure-b5prd^t6_@jdhb=n9d0yo4=!sy9_5qs@3!%%nu@tc((bv)5%!b
 DEBUG = True
 inProd = False
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "172.16.9.174"
-]
+ALLOWED_HOSTS = ["*"]  # Allow all hosts temporarily for debugging
 
 CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
     'http://localhost:4200',
+    'http://localhost:8000',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins temporarily for debugging
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
 ]
 
 # Application definition
@@ -143,13 +163,13 @@ SWAGGER_SETTINGS = {
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
 ]
 
 ROOT_URLCONF = 'edutech_payment_engine.urls'
@@ -177,17 +197,17 @@ WSGI_APPLICATION = 'edutech_payment_engine.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'assistant_db',
-        'USER': 'root',
-        'PASSWORD': "",
-        'HOST': '127.0.0.1',
+        'NAME': os.getenv('DB_NAME', 'edutech_db'),
+        'USER': os.getenv('DB_USER', 'edutech_user'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'edutech_password'),
+        'HOST': os.getenv('DB_HOST', 'db'),
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8mb4',
         },
     }
 }
@@ -229,37 +249,14 @@ USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
-    # and renames the files with unique names for each version to support long-term caching
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
-if not os.path.exists(STATIC_DIR):
-    os.makedirs(STATIC_DIR)
-
-STATICFILES_DIRS = [
-    STATIC_DIR,
-]
-
-# Other settings remain unchanged...
-
-STATIC_URL = '/static/'
-AUTH_USER_MODEL = 'users.CustomUser'
-CORS_ALLOW_ALL_ORIGINS = True
-
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

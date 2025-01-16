@@ -1,0 +1,10 @@
+
+
+services:
+  backendpythonv2:
+    image: backendpythonv2
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8000:8000

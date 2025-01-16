@@ -41,45 +41,65 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
-    this.loading = true;
     if (this.loginForm.valid) {
+      this.loading = true;
+      console.log('Submitting login form with data:', this.loginForm.value);
+      
       this.authService.login(this.loginForm.value).subscribe({
         next: (result: any) => {
+          console.log('Login response received:', result);
           if (result.status === 200) {
+            console.log('Login successful, saving user data:', result.entity);
             this.tokenStorageService.saveUser(result.entity);
+            const savedUser = this.tokenStorageService.getUser();
+            console.log('Saved user data:', savedUser);
+            
+            // Check if we have the necessary data
+            if (!savedUser) {
+              console.error('No user data was saved');
+              this.notificationService.showError('Login failed: No user data received');
+              return;
+            }
+
             // Prompt user to change password
             Swal.fire({
-              title: 'Login Successful!',
-              text: 'Would you like to change your password?',
-              icon: 'question',
-              showCancelButton: true,
-              confirmButtonText: 'Yes, Change Password',
-              cancelButtonText: 'No, Continue to OTP page',
-              reverseButtons: true 
-            }).then((result) => {
-              if (result.isConfirmed) {
-                
-                this.router.navigate(['passwordreset']);
-              } else {
-                // If user cancels, navigate to OTP page
-                this.router.navigate(['otp']);
-              }
+              title: 'Login Successful',
+              text: 'Welcome back!',
+              icon: 'success',
+              confirmButtonText: 'Continue'
+            }).then(() => {
+              console.log('Navigating to dashboard...');
+              this.router.navigate(['/admin/home']).then(
+                (navigated) => console.log('Navigation result:', navigated),
+                (error) => console.error('Navigation error:', error)
+              );
             });
-            this.loading = false;
-            this.notificationService.alertSuccess(result.message);
           } else {
-            this.loading = false;
-            this.notificationService.alertWarning(result.message);
-            this.errorMsg = result.message;
+            console.error('Unexpected response status:', result.status);
+            this.notificationService.showError('Login failed. Please try again.');
           }
         },
         error: (error: any) => {
+          console.error('Login error:', error);
           this.loading = false;
-          console.log(error);
-          this.errorMsg = error.statusText;
-          this.notificationService.alertWarning(error.statusText);
+          
+          let errorMessage = 'Login failed. Please try again.';
+          if (error.status === 401) {
+            errorMessage = 'Invalid username or password.';
+          } else if (error.status === 500) {
+            errorMessage = 'Server error. Please try again later.';
+          } else if (error.status === 0) {
+            errorMessage = 'Unable to connect to the server. Please check your connection.';
+          }
+          
+          this.notificationService.showError(errorMessage);
+        },
+        complete: () => {
+          this.loading = false;
         }
       });
+    } else {
+      this.notificationService.showError('Please fill in all required fields.');
     }
   }
   showSnackBar(message: string, type: string): void {

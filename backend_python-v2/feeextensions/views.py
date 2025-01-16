@@ -7,7 +7,7 @@ from feeextensions.serializers import FeeExtensionsSerializers
 from utils.ApiResponse import ApiResponse
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from utils.Helpers import Helpers
 from utils.Helpers import calculate_next_due_date
 from .forms import FeeExtensionForm
@@ -21,7 +21,7 @@ class FeeExtensionsView(viewsets.ModelViewSet):
     queryset = FeeExtensions.objects.all()
     serializer_class = FeeExtensionsSerializers
     # pagination_class = PageNumberPagination
-    # authentication_classes = [JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication]
+    # authentication_classes = [JWTAuthentication, SessionAuthentication, BasicAuthentication]
     # permission_classes = [IsAuthenticated]
 
     def list(self, request, *args, **kwargs):
