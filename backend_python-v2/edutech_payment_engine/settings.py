@@ -200,10 +200,10 @@ WSGI_APPLICATION = 'edutech_payment_engine.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'edutech_db'),
-        'USER': os.getenv('DB_USER', 'edutech_user'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'edutech_password'),
-        'HOST': os.getenv('DB_HOST', 'db'),
+        'NAME': os.getenv('DB_NAME', 'edutechdb'),
+        'USER': os.getenv('DB_USER', 'admin'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'superuser'),
+        'HOST': os.getenv('DB_HOST', 'edutechdb.cfg4siac63k3.us-east-2.rds.amazonaws.com'),
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
